@@ -8,6 +8,11 @@ Extending the adopted spec, each change should have a link to its corresponding 
 
 ## [Unreleased]
 
+### Added
+
+* `deploy_using_private_endpoint` variable on `private-cluster`
+  submodule. [#136]
+
 ## [v1.0.1] - 2019-04-04
 
 ### Added
@@ -84,6 +89,7 @@ Extending the adopted spec, each change should have a link to its corresponding 
 [v0.3.0]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/compare/v0.1.0...v0.2.0
 
+[#136]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/pull/136
 [#132]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/pull/132
 [#121]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/pull/121
 [#109]: https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/pull/109
