@@ -62,19 +62,9 @@ output "logging_service" {
   value       = module.gke.logging_service
 }
 
-output "logging_enabled_components" {
-  description = "List of services to monitor"
-  value       = module.gke.logging_enabled_components
-}
-
 output "monitoring_service" {
   description = "Monitoring service used"
   value       = module.gke.monitoring_service
-}
-
-output "monitoring_enabled_components" {
-  description = "List of services to monitor"
-  value       = module.gke.monitoring_enabled_components
 }
 
 output "master_authorized_networks_config" {
