@@ -97,8 +97,10 @@ module "gke" {
   upstream_nameservers = var.upstream_nameservers
 
   logging_service    = var.logging_service
-  monitoring_service = var.monitoring_service
+  logging_enabled_components = var.logging_enabled_components
 
+  monitoring_service = var.monitoring_service
+  monitoring_enabled_components = var.monitoring_enabled_components
   monitoring_enable_managed_prometheus = var.monitoring_enable_managed_prometheus
 
   // We never use the default service account for the cluster. The default
