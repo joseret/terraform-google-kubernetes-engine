@@ -47,8 +47,12 @@ resource "google_container_cluster" "primary" {
       channel = release_channel.value.channel
     }
   }
-  gateway_api_config {
-    channel = local.release_channel
+  dynamic "gateway_api_config" {
+    for_each = local.release_channel
+
+    content {
+      channel = release_channel.value.channel
+    }
   }
   
   dynamic "cost_management_config" {
