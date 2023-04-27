@@ -51,7 +51,7 @@ resource "google_container_cluster" "primary" {
     for_each = local.release_channel
 
     content {
-      channel = release_channel.value.channel
+      channel = gateway_api_config.value.channel
     }
   }
   
