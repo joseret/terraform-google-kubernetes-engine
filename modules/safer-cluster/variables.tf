@@ -482,10 +482,3 @@ variable "notification_config_topic" {
   default     = ""
 }
 
-// joseret
-variable "enable_autopilot" {
-  type        = bool
-  description = "Enable Autopilot"
-  default     = false
-}
-
