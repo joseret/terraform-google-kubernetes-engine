@@ -481,3 +481,11 @@ variable "notification_config_topic" {
   description = "The desired Pub/Sub topic to which notifications will be sent by GKE. Format is projects/{project}/topics/{topic}."
   default     = ""
 }
+
+// joseret
+variable "enable_autopilot" {
+  type        = bool
+  description = "Enable Autopilot"
+  default     = false
+}
+
