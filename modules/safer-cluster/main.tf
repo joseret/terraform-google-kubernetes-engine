@@ -19,7 +19,6 @@
 // The safer-cluster module is based on a private cluster, with a several
 // settings set to recommended values by default.
 module "gke" {
-  for_each = toset([for s in ["standard"] : s if var.enable_autopilot == null || !var.enable_autopilot ])
   source             = "../beta-private-cluster/"
   project_id         = var.project_id
   name               = var.name
