@@ -31,8 +31,12 @@ resource "google_container_cluster" "primary" {
   node_locations    = local.node_locations
   cluster_ipv4_cidr = var.cluster_ipv4_cidr
   network           = "projects/${local.network_project_id}/global/networks/${var.network}"
-  gateway_api_config {
-    channel = "CHANNEL_STANDARD"
+  dynamic "gateway_api_config" {
+    for_each = local.release_channel
+
+    content {
+      channel = gateway_api_config.value.channel == "UNSPECIFIED" ? "CHANNEL_DISABLED" : "CHANNEL_STANDARD"
+    }
   }
 
   dynamic "release_channel" {
@@ -63,8 +67,13 @@ resource "google_container_cluster" "primary" {
 
   min_master_version = var.release_channel == null || var.release_channel == "UNSPECIFIED" ? local.master_version : null
 
-  logging_service    = var.logging_service
+#   logging_service    = var.logging_service
 #   monitoring_service = var.monitoring_service
+  
+  logging_enabled_components = var.logging_enabled_components
+
+#   monitoring_service = var.monitoring_service
+  monitoring_enabled_components = var.monitoring_enabled_components  
   dynamic "monitoring_config" {
     for_each = var.monitoring_enable_managed_prometheus ? [1] : []
 
