@@ -67,21 +67,21 @@ resource "google_container_cluster" "primary" {
 
   min_master_version = var.release_channel == null || var.release_channel == "UNSPECIFIED" ? local.master_version : null
 
-#   logging_service    = var.logging_service
-#   monitoring_service = var.monitoring_service
-  
-#   logging_enabled_components = var.logging_enabled_components
+  #   logging_service    = var.logging_service
+  #   monitoring_service = var.monitoring_service
 
-#   monitoring_service = var.monitoring_service
-#   monitoring_enabled_components = var.monitoring_enabled_components  
-  dynamic "monitoring_config" {
-    for_each = var.monitoring_enable_managed_prometheus ? [1] : []
+  #   logging_enabled_components = var.logging_enabled_components
 
-    content {
-      managed_prometheus {
-        enabled = var.monitoring_enable_managed_prometheus
-      }
-    }
+  #   monitoring_service = var.monitoring_service
+  #   monitoring_enabled_components = var.monitoring_enabled_components  
+  monitoring_config {
+    enable_components  = var.monitoring_enabled_components
+    managed_prometheus = var.monitoring_enable_managed_prometheus ? true : false
+  }
+
+  logging_config {
+    enable_components = var.logging_enabled_components
+
   }
   vertical_pod_autoscaling {
     enabled = var.enable_vertical_pod_autoscaling
