@@ -75,8 +75,10 @@ resource "google_container_cluster" "primary" {
   #   monitoring_service = var.monitoring_service
   #   monitoring_enabled_components = var.monitoring_enabled_components  
   monitoring_config {
-    enable_components  = var.monitoring_enabled_components
-    managed_prometheus = var.monitoring_enable_managed_prometheus ? true : false
+    enable_components = var.monitoring_enabled_components
+    managed_prometheus = {
+      enabled = var.monitoring_enable_managed_prometheus ? true : false
+    }
   }
 
   logging_config {
