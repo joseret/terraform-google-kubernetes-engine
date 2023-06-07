@@ -408,3 +408,15 @@ variable "monitoring_enable_managed_prometheus" {
   description = "(Beta) Configuration for Managed Service for Prometheus. Whether or not the managed collection is enabled."
   default     = false
 }
+
+variable "monitoring_enabled_components" {
+  type    = list(string)
+  default = ["SYSTEM_COMPONENTS", "APISERVER", "CONTROLLER_MANAGER", "SCHEDULER"]
+}
+
+variable "logging_enabled_components" {
+  type    = list(string)
+  default = ["SYSTEM_COMPONENTS", "APISERVER", "CONTROLLER_MANAGER", "SCHEDULER", "WORKLOADS"]
+}
+
+  
