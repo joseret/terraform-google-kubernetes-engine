@@ -70,10 +70,10 @@ resource "google_container_cluster" "primary" {
 #   logging_service    = var.logging_service
 #   monitoring_service = var.monitoring_service
   
-  logging_enabled_components = var.logging_enabled_components
+#   logging_enabled_components = var.logging_enabled_components
 
 #   monitoring_service = var.monitoring_service
-  monitoring_enabled_components = var.monitoring_enabled_components  
+#   monitoring_enabled_components = var.monitoring_enabled_components  
   dynamic "monitoring_config" {
     for_each = var.monitoring_enable_managed_prometheus ? [1] : []
 
