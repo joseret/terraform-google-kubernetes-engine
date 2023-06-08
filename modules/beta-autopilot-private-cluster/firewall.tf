@@ -199,8 +199,10 @@ resource "google_compute_firewall" "shadow_allow_nodes" {
 
 
 resource "google_compute_firewall" "load_balancer" {
-  for_each    = ["ext_lb"]
-  name        = "gke-${each.value}-${substr(var.name, 0, min(25, length(var.name)))}-ext_lb"
+  for_each = { "ext_lb" = {
+    name = "ext_lb"
+  } }
+  name        = "gke-${each.key}-${substr(var.name, 0, min(25, length(var.name)))}-ext"
   description = "Managed by Terraform GKE module: external lb"
   project     = local.network_project_id
   network     = var.network
