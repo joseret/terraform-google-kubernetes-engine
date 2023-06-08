@@ -222,8 +222,10 @@ resource "google_compute_firewall" "load_balancer" {
   target_tags        = each.value.target_tags
   destination_ranges = each.value.destination_ranges
 
-  allow = each.value.allow
-
+  allow {
+    protocol = each.value.allow.protocol
+    ports    = each.value.allow.ports
+  }
 
   log_config {
     metadata = "INCLUDE_ALL_METADATA"
