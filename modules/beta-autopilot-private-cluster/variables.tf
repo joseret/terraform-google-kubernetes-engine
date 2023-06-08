@@ -419,4 +419,9 @@ variable "logging_enabled_components" {
   default = ["SYSTEM_COMPONENTS", "APISERVER", "CONTROLLER_MANAGER", "SCHEDULER", "WORKLOADS"]
 }
 
-  
+
+variable "extlb_firewall_rules" {
+  type        = any
+  description = "The firewall priority of GKE - load balancer"
+  default     = {}
+}
