@@ -196,3 +196,26 @@ resource "google_compute_firewall" "shadow_allow_nodes" {
     metadata = "INCLUDE_ALL_METADATA"
   }
 }
+
+
+resource "google_compute_firewall" "load_balancer" {
+  for_each    = ["ext_lb"]
+  name        = "gke-${each.value}-${substr(var.name, 0, min(25, length(var.name)))}-ext_lb"
+  description = "Managed by Terraform GKE module: external lb"
+  project     = local.network_project_id
+  network     = var.network
+  priority    = var.shadow_firewall_rules_priority
+  direction   = "INGRESS"
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = [local.cluster_network_tag]
+
+  allow {
+    protocol = "tcp"
+    ports    = [80, 443, 15021]
+  }
+
+  log_config {
+    metadata = "INCLUDE_ALL_METADATA"
+  }
+}
