@@ -204,7 +204,7 @@ resource "google_compute_firewall" "load_balancer" {
       name               = "ext-lb"
       target_tags        = ["gke-gke-svpc3-ee850150-node"]
       source_ranges      = ["0.0.0.0/0"]
-      destination_ranges = ["35.245.210.22"]
+      destination_ranges = ["35.245.210.220"]
       allow = {
         protocol = "tcp"
         ports    = [80, 443, 15021]
