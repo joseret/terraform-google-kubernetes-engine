@@ -89,9 +89,9 @@ resource "google_container_cluster" "primary" {
     enabled = var.enable_vertical_pod_autoscaling
   }
   enable_autopilot = true
-  node_config {
-    tags = [local.cluster_network_tag]
-  }
+  # node_config {
+  #   tags = [local.cluster_network_tag]
+  # }
 
   node_pool_auto_config {
     network_tags {
