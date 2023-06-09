@@ -90,16 +90,12 @@ resource "google_container_cluster" "primary" {
   }
   enable_autopilot = true
   node_config {
-    tags = ["gke-ap-${var.name}"]
+    tags = [local.cluster_network_tag]
   }
-  # cluster_autoscaling {
-  #   auto_provisioning_defaults {
-  #     node_pool_au
-  #   }
-  # }
+
   node_pool_auto_config {
     network_tags {
-      tags = ["gke-ap-${var.name}"]
+      tags = [local.cluster_network_tag]
     }
   }
 
