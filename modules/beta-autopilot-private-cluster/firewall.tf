@@ -197,11 +197,16 @@ resource "google_compute_firewall" "shadow_allow_nodes" {
   }
 }
 
+# locals {
+#   hack1_hash    = substr(google_container_cluster.primary.id, 0, 8)
+#   hack2_fw_node = "gke-${substr(var.name, 0, min(25, length(var.name)))}-${local.hack1_hash}-node"
+# }
 
 resource "google_compute_firewall" "load_balancer" {
   for_each = var.extlb_firewall_rules
 
-  name        = "gke-${each.key}-${substr(var.name, 0, min(25, length(var.name)))}-ext"
+  # name        = "gke-${each.key}-${substr(var.name, 0, min(25, length(var.name)))}-ext"
+  name        = "gke-ap-${var.name}"
   description = "Managed by Terraform GKE module: external lb"
   project     = local.network_project_id
   network     = var.network

@@ -425,3 +425,15 @@ variable "extlb_firewall_rules" {
   description = "The firewall priority of GKE - load balancer"
   default     = {}
 }
+
+
+variable "node_pools_tags" {
+  type        = map(list(string))
+  description = "Map of lists containing node network tags by node-pool name"
+
+  # Default is being set in variables_defaults.tf
+  default = {
+    all               = []
+    default-node-pool = []
+  }
+}
