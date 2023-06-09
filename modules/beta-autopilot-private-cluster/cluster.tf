@@ -90,7 +90,7 @@ resource "google_container_cluster" "primary" {
   }
   enable_autopilot = true
   node_config {
-    tags = "gke-ap-${var.name}"
+    tags = ["gke-ap-${var.name}"]
   }
 
 
