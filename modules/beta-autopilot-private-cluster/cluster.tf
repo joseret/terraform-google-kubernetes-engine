@@ -92,7 +92,16 @@ resource "google_container_cluster" "primary" {
   node_config {
     tags = ["gke-ap-${var.name}"]
   }
-
+  # cluster_autoscaling {
+  #   auto_provisioning_defaults {
+  #     node_pool_au
+  #   }
+  # }
+  node_pool_auto_config {
+    network_tags {
+      tags = ["gke-ap-${var.name}"]
+    }
+  }
 
   dynamic "master_authorized_networks_config" {
     for_each = local.master_authorized_networks_config
