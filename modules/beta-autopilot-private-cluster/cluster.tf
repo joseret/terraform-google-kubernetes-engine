@@ -91,12 +91,10 @@ resource "google_container_cluster" "primary" {
   enable_autopilot = true
   node_pool_defaults {
     network_tags {
-        tags = "gke-ap-${var.name}"
-
+      tags = "gke-ap-${var.name}"
     }
   }
 
-      )
   dynamic "master_authorized_networks_config" {
     for_each = local.master_authorized_networks_config
     content {
