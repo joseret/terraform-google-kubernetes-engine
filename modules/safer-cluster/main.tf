@@ -19,7 +19,7 @@
 // The safer-cluster module is based on a private cluster, with a several
 // settings set to recommended values by default.
 module "gke" {
-  source             = "../beta-private-cluster/"
+  source             = "github.com/joseret/terraform-google-kubernetes-engine//modules/beta-private-cluster?ref=gke-parms-202306"
   project_id         = var.project_id
   name               = var.name
   description        = var.description
