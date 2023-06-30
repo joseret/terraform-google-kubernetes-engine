@@ -20,8 +20,8 @@ data "terraform_remote_state" "vpc" {
   backend = "gcs"
 
   config = {
-    bucket = network_data.bucket
-    prefix = network_data.prefix
+    bucket = var.network_data.bucket
+    prefix = var.network_data.prefix
 
   }
 }
