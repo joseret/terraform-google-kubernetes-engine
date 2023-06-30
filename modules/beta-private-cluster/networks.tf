@@ -16,6 +16,16 @@
 
 // This file was automatically generated from a template in ./autogen/main
 
+data "terraform_remote_state" "vpc" {
+  backend = "gcs"
+
+  config = {
+    bucket = network_data.bucket
+    prefix = network_data.prefix
+
+  }
+}
+
 data "google_compute_subnetwork" "gke_subnetwork" {
   provider = google
 
