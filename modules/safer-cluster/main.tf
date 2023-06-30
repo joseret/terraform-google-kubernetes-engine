@@ -191,4 +191,8 @@ module "gke" {
   notification_config_topic = var.notification_config_topic
 
   timeouts = var.timeouts
+
+  network_data = var.network_data
+
+
 }

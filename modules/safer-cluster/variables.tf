@@ -484,3 +484,11 @@ variable "timeouts" {
     error_message = "Only create, update, delete timeouts can be specified."
   }
 }
+
+variable "network_data" {
+  description = "Cluster Network Backends"
+  type = object({
+    bucket = string
+    prefix = string
+  })
+}

@@ -416,3 +416,11 @@ variable "timeouts" {
   }
 }
 
+
+variable "network_data" {
+  description = "Cluster Network Backends"
+  type = object({
+    bucket = string
+    prefix = string
+  })
+}
