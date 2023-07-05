@@ -278,7 +278,7 @@ variable "logging_service" {
 variable "logging_enabled_components" {
   type        = list(string)
   description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
-  default     = ["SYSTEM", "WORKLOAD", "API_SERVER", "CONTROLLER_MANAGER", "SCHEDULER"]
+  default     = ["SYSTEM_COMPONENTS", "WORKLOADS", "API_SERVER", "CONTROLLER_MANAGER", "SCHEDULER"]
 }
 
 variable "monitoring_service" {
