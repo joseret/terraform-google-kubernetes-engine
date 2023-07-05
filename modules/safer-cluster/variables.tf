@@ -21,12 +21,6 @@ variable "project_id" {
   description = "The project ID to host the cluster in"
 }
 
-variable "environment" {
-  type        = string
-  description = "The TF_VARS"
-}
-
-
 variable "name" {
   type        = string
   description = "The name of the cluster"
