@@ -744,3 +744,9 @@ variable "network_data" {
     prefix = string
   })
 }
+
+variable "gcs_fuse_csi_driver" {
+  type        = bool
+  description = "The status of the Fuse CSI driver addon, which allows the usage of filestore instance as volumes"
+  default     = false
+}
