@@ -231,6 +231,14 @@ resource "google_container_cluster" "primary" {
       }
     }
 
+    dynamic "gcs_fuse_csi_driver_config" {
+      for_each = local.gcs_fuse_csi_driver_config
+
+      content {
+        enabled = gcs_fuse_csi_driver_config.value.enabled
+      }
+    }
+
     istio_config {
       disabled = !var.istio
       auth     = var.istio_auth
