@@ -141,8 +141,8 @@ module "gke" {
 
   cloudrun = var.cloudrun
 
-  dns_cache = var.dns_cache
-
+  dns_cache           = var.dns_cache
+  gcs_fuse_csi_driver = var.gcs_fuse_csi_driver
 
   config_connector        = var.config_connector
   gke_backup_agent_config = var.gke_backup_agent_config

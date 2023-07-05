@@ -21,6 +21,12 @@ variable "project_id" {
   description = "The project ID to host the cluster in"
 }
 
+variable "environment" {
+  type        = string
+  description = "The TF_VARS"
+}
+
+
 variable "name" {
   type        = string
   description = "The name of the cluster"
@@ -428,6 +434,12 @@ variable "gce_pd_csi_driver" {
 }
 
 variable "filestore_csi_driver" {
+  type        = bool
+  description = "The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes"
+  default     = false
+}
+
+variable "gcs_fuse_csi_driver" {
   type        = bool
   description = "The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes"
   default     = false

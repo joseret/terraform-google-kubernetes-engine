@@ -706,3 +706,10 @@ variable "enable_identity_service" {
   description = "Enable the Identity Service component, which allows customers to use external identity providers with the K8S API."
   default     = false
 }
+
+
+variable "gcs_fuse_csi_driver" {
+  type        = bool
+  description = "The status of the Fuse CSI driver addon, which allows the usage of filestore instance as volumes"
+  default     = false
+}
