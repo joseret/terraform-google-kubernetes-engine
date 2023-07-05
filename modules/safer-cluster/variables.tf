@@ -21,6 +21,13 @@ variable "project_id" {
   description = "The project ID to host the cluster in"
 }
 
+// Pending in TF - use GKE Hub
+# variable "fleet_project_id" {
+#   type        = string
+#   description = "The fleet project ID to host the cluster in"
+# }
+
+
 variable "name" {
   type        = string
   description = "The name of the cluster"
@@ -266,6 +273,12 @@ variable "logging_service" {
   type        = string
   description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
   default     = "logging.googleapis.com/kubernetes"
+}
+
+variable "logging_enabled_components" {
+  type        = array(string)
+  description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
+  default     = ["SYSTEM", "WORKLOAD", "API_SERVER", "CONTROLLER_MANAGER", "SCHEDULER"]
 }
 
 variable "monitoring_service" {
