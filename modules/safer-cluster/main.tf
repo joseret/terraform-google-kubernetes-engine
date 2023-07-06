@@ -192,8 +192,9 @@ module "gke" {
 
   timeouts = var.timeouts
 
-  network_data               = var.network_data
-  logging_enabled_components = var.logging_enabled_components
+  network_data                  = var.network_data
+  logging_enabled_components    = var.logging_enabled_components
+  monitoring_enabled_components = var.monitoring_enabled_components
   # fleet_project_id = var.fleet_project_id
 
 }

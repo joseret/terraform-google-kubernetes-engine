@@ -287,6 +287,12 @@ variable "monitoring_service" {
   default     = "monitoring.googleapis.com/kubernetes"
 }
 
+variable "monitoring_enabled_components" {
+  type        = list(string)
+  description = "The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none"
+  default     = ["SYSTEM_COMPONENTS", "APISERVER", "CONTROLLER_MANAGER", "SCHEDULER"]
+}
+
 variable "monitoring_enable_managed_prometheus" {
   type        = bool
   description = "(Beta) Configuration for Managed Service for Prometheus. Whether or not the managed collection is enabled."
