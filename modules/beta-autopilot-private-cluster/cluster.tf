@@ -90,8 +90,8 @@ resource "google_container_cluster" "primary" {
   dynamic "security_posture_config" {
     for_each = toset(var.security_posture_config)
     content {
-      mode               = each.value.mode
-      vulnerability_mode = each.value.vulnerability_mode
+      mode               = security_posture_config.value.mode
+      vulnerability_mode = security_posture_config.value.vulnerability_mode
     }
   }
 
