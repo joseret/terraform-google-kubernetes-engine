@@ -54,6 +54,14 @@ resource "google_container_cluster" "primary" {
       enabled = var.enable_cost_allocation
     }
   }
+
+  dynamic "binary_authorization" {
+    for_each = var.binary_authorization_evaluation_mode ? [var.binary_authorization_evaluation_mode] : []
+    content {
+      evaluation_mode = var.binary_authorization_evaluation_mode
+    }
+  }
+
   dynamic "confidential_nodes" {
     for_each = local.confidential_node_config
     content {
