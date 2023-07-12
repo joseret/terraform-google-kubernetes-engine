@@ -87,6 +87,14 @@ resource "google_container_cluster" "primary" {
     }
   }
 
+  dynamic "security_posture_config" {
+    for_each = toset(var.security_posture_config)
+    content {
+      mode               = each.value.mode
+      vulnerability_mode = each.value.vulnerability_mode
+    }
+  }
+
 
   dynamic "confidential_nodes" {
     for_each = local.confidential_node_config

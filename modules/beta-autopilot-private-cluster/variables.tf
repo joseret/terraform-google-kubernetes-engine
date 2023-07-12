@@ -435,3 +435,9 @@ variable "logging_enabled_components" {
   description = "List of services to monitor: SYSTEM_COMPONENTS, WORKLOADS. Empty list is default GKE configuration."
   default     = []
 }
+
+variable "security_posture_config" {
+  type        = list(object({ mode = string, vulnerability_mode = string }))
+  description = "Security Posture Config"
+  default     = []
+}
