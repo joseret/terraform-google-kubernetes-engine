@@ -72,7 +72,8 @@ resource "google_container_cluster" "primary" {
   }
 
   dynamic "monitoring_config" {
-    for_each = length(var.monitoring_enabled_components) > 0 || var.monitoring_enable_managed_prometheus ? [1] : []
+    for_each = length(var.monitoring_enabled_components) > 0 ? [1] : []
+    # for_each = length(var.monitoring_enabled_components) > 0 || var.monitoring_enable_managed_prometheus ? [1] : []
 
     content {
       enable_components = length(var.monitoring_enabled_components) > 0 ? var.monitoring_enabled_components : []
