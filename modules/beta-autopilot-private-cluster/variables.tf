@@ -418,7 +418,7 @@ variable "timeouts" {
 
 
 variable "binary_authorization_evaluation_mode" {
-  type        = striing
+  type        = string
   description = "Enable BinAuthZ Admission controller using mode"
   default     = null
 }
