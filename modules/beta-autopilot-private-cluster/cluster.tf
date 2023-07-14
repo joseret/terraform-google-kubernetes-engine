@@ -121,13 +121,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  dynamic "gke_backup_agent_config" {
-    for_each = local.gke_backup_agent_config
 
-    content {
-      enabled = gke_backup_agent_config.value.enabled
-    }
-  }
 
   vertical_pod_autoscaling {
     enabled = var.enable_vertical_pod_autoscaling
@@ -174,6 +168,14 @@ resource "google_container_cluster" "primary" {
 
     horizontal_pod_autoscaling {
       disabled = !var.horizontal_pod_autoscaling
+    }
+
+    dynamic "gke_backup_agent_config" {
+      for_each = local.gke_backup_agent_config
+
+      content {
+        enabled = gke_backup_agent_config.value.enabled
+      }
     }
 
   }
