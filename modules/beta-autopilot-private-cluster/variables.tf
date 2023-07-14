@@ -96,6 +96,12 @@ variable "http_load_balancing" {
   default     = true
 }
 
+variable "gke_backup_agent_config" {
+  type        = bool
+  description = "Enable gke_backup_agent_config addon"
+  default     = false
+}
+
 variable "service_external_ips" {
   type        = bool
   description = "Whether external ips specified by a service will be allowed in this cluster"
