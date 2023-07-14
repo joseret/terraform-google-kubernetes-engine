@@ -167,13 +167,13 @@ resource "google_container_cluster" "primary" {
     }
 
     horizontal_pod_autoscaling {
-      disabled = !var.horizontal_pod_autoscaling
+      disabled = !var.horiszontal_pod_autoscaling
     }
 
     dynamic "gke_backup_agent_config" {
-      for_each = var.cluster_output_gke_backup_agent_config ? [1] : []
+      for_each = local.cluster_output_gke_backup_agent_config ? [1] : []
       content {
-        enabled = var.gke_backup_agent_config
+        enabled = local.cluster_output_gke_backup_agent_config
       }
     }
 
