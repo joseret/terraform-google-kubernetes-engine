@@ -167,7 +167,7 @@ resource "google_container_cluster" "primary" {
     }
 
     horizontal_pod_autoscaling {
-      disabled = !var.horiszontal_pod_autoscaling
+      disabled = !var.horizontal_pod_autoscaling
     }
 
     dynamic "gke_backup_agent_config" {
