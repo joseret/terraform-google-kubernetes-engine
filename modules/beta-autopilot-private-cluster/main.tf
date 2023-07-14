@@ -81,7 +81,7 @@ locals {
   cluster_output_http_load_balancing_enabled        = google_container_cluster.primary.addons_config[0].http_load_balancing[0].disabled
   cluster_output_horizontal_pod_autoscaling_enabled = google_container_cluster.primary.addons_config[0].horizontal_pod_autoscaling[0].disabled
   cluster_output_vertical_pod_autoscaling_enabled   = google_container_cluster.primary.vertical_pod_autoscaling != null && length(google_container_cluster.primary.vertical_pod_autoscaling) == 1 ? google_container_cluster.primary.vertical_pod_autoscaling[0].enabled : false
-  cluster_output_gke_backup_agent_config            = google_container_cluster.primary.gke_backup_agent_config != null && length(google_container_cluster.primary.gke_backup_agent_config) == 1 ? google_container_cluster.primary.gke_backup_agent_config[0].enabled : false
+  cluster_output_gke_backup_agent_config            = google_container_cluster.primary.addons_config[0].gke_backup_agent_config != null && length(google_container_cluster.primary.addons_config[0].gke_backup_agent_config) == 1 ? google_container_cluster.primary.addons_config[0].istio_config[0].enabled : false
 
   # BETA features
   cluster_output_istio_disabled              = google_container_cluster.primary.addons_config[0].istio_config != null && length(google_container_cluster.primary.addons_config[0].istio_config) == 1 ? google_container_cluster.primary.addons_config[0].istio_config[0].disabled : false
