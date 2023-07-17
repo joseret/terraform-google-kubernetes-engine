@@ -26,8 +26,11 @@ data "google_compute_zones" "available" {
   region  = local.region
 }
 
+locals {
+  gke_count = try(google_container_cluster.primary != null ? 1 : 0, 0)
+}
 data "google_container_cluster" "the_cluster" {
-  count    = try(google_container_cluster.primary != null ? 1 : 0, 0)
+  count    = local.gke_count
   location = local.location
   project  = var.project_id
   name     = var.name
