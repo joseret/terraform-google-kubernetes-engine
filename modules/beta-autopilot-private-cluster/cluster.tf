@@ -174,8 +174,9 @@ resource "google_container_cluster" "primary" {
       for_each = try(local.cluster_output_gke_backup_agent_config != null, false) ? [1] : []
       content {
         enabled = try(local.cluster_output_gke_backup_agent_config != null, false)
-    }
+      }
 
+    }
   }
 
   networking_mode = "VPC_NATIVE"
