@@ -171,9 +171,9 @@ resource "google_container_cluster" "primary" {
     }
 
     dynamic "gke_backup_agent_config" {
-      for_each = try(local.cluster_output_gke_backup_agent_config != null, false) ? [1] : []
+      for_each = var.gke_backup_agent_config ? [1] : [0]
       content {
-        enabled = try(local.cluster_output_gke_backup_agent_config != null, false)
+        enabled = var.gke_backup_agent_config
       }
 
     }
