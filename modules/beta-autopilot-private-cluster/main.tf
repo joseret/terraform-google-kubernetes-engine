@@ -26,16 +26,6 @@ data "google_compute_zones" "available" {
   region  = local.region
 }
 
-locals {
-  gke_count = try(google_container_cluster.primary != null ? 1 : 0, 0)
-}
-data "google_container_cluster" "the_cluster" {
-  count    = local.gke_count
-  location = local.location
-  project  = var.project_id
-  name     = var.name
-  # depends_on = [google_container_cluster.primary]
-}
 
 
 resource "random_shuffle" "available_zones" {
@@ -93,7 +83,7 @@ locals {
   cluster_output_http_load_balancing_enabled        = google_container_cluster.primary.addons_config[0].http_load_balancing[0].disabled
   cluster_output_horizontal_pod_autoscaling_enabled = google_container_cluster.primary.addons_config[0].horizontal_pod_autoscaling[0].disabled
   cluster_output_vertical_pod_autoscaling_enabled   = google_container_cluster.primary.vertical_pod_autoscaling != null && length(google_container_cluster.primary.vertical_pod_autoscaling) == 1 ? google_container_cluster.primary.vertical_pod_autoscaling[0].enabled : false
-  cluster_output_gke_backup_agent_config            = try(data.google_container_cluster.the_cluster.addons_config[0].gke_backup_agent_config, null) == null ? false : var.gke_backup_agent_config
+  cluster_output_gke_backup_agent_config            = try(google_container_cluster.primary.addons_config[0].gke_backup_agent_config, null) == null ? false : var.gke_backup_agent_config
   # BETA features
   cluster_output_istio_disabled              = google_container_cluster.primary.addons_config[0].istio_config != null && length(google_container_cluster.primary.addons_config[0].istio_config) == 1 ? google_container_cluster.primary.addons_config[0].istio_config[0].disabled : false
   cluster_output_pod_security_policy_enabled = google_container_cluster.primary.pod_security_policy_config != null && length(google_container_cluster.primary.pod_security_policy_config) == 1 ? google_container_cluster.primary.pod_security_policy_config[0].enabled : false
