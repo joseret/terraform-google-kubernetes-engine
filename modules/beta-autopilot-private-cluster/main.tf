@@ -27,11 +27,11 @@ data "google_compute_zones" "available" {
 }
 
 data "google_container_cluster" "the_cluster" {
-  count      = try(google_container_cluster.primary != null ? 1 : 0, 0)
-  location   = local.location
-  project    = var.project_id
-  name       = var.name
-  depends_on = [google_container_cluster.primary]
+  count    = try(google_container_cluster.primary != null ? 1 : 0, 0)
+  location = local.location
+  project  = var.project_id
+  name     = var.name
+  # depends_on = [google_container_cluster.primary]
 }
 
 
