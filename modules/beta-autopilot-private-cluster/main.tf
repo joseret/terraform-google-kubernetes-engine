@@ -27,9 +27,10 @@ data "google_compute_zones" "available" {
 }
 
 data "google_container_cluster" "the_cluster" {
-  location = local.location
-  project  = var.project_id
-  name     = var.name
+  location   = local.location
+  project    = var.project_id
+  name       = var.name
+  depends_on = [google_container_cluster.primary]
 }
 
 
