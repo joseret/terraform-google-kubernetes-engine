@@ -104,3 +104,9 @@ variable "create_system_namespace" {
   type        = bool
   default     = true
 }
+
+variable "k_provider" {
+  description = "k-provider"
+  type        = any
+  default     = null
+}
