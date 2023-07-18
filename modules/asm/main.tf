@@ -25,9 +25,9 @@ locals {
   fleet_id = coalesce(var.fleet_id, var.project_id)
 }
 
-provider "kubernetes" {
-  alias = var.k_provider
-}
+# provider "kubernetes" {
+#   alias = var.k_provider
+# }
 data "google_container_cluster" "asm" {
   project  = var.project_id
   name     = var.cluster_name
